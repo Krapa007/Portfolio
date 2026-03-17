@@ -15,7 +15,7 @@ Personal portfolio built with **React 18 + Vite**, featuring a custom Dalmatian 
 | Styling | CSS Variables + inline styles (no Tailwind needed) |
 | Animations | Canvas 2D API (custom, no libraries) |
 | Deployment | Netlify |
-| Repo | GitLab — `git@gitlab.com:Krapa007/kalyan-portfolio.git` |
+| Repo | GitLab — `git@gitlab.com:Krapa007/Portfolio.git` |
 
 ---
 
@@ -23,7 +23,7 @@ Personal portfolio built with **React 18 + Vite**, featuring a custom Dalmatian 
 
 ```bash
 # Clone
-git clone git@gitlab.com:Krapa007/kalyan-portfolio.git
+git clone git@gitlab.com:Krapa007/Portfolio.git
 cd kalyan-portfolio
 
 # Install
