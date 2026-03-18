@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;600;700;800&family=Fira+Code:wght@300;400;500&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+/* ── THEME VARIABLES ── */
+:root {
+  --bg:   #080808;
+  --bg2:  #0f0f0f;
+  --bg3:  #1a1a1a;
+  --text:   #f0ece4;
+  --muted:  #aaa;
+  --muted2: #c8c4bc;
+  --accent:  #ff4500;
+  --accent2: #ff6b35;
+  --border:  #222;
+  --white:   #f0ece4;
+  --green:   #3fd68a;
+  --code:    #8fffa0;
+  --outline-stroke: rgba(255, 255, 255, 0.38);
+  --glow: rgba(255, 69, 0, 0.18);
+}
+
+body.light {
+  --bg: #f5f0e8;
+  --bg2: #ede8de;
+  --bg3: #e4dfd4;
+  --text: #1a1a1a;
+  --muted: #666;
+  --muted2: #555;
+  --accent: #e03500;
+  --accent2: #f55520;
+  --border: #d0c9bc;
+  --white: #1a1a1a;
+  --green: #16a34a;
+  --code: #b34000;
+  --outline-stroke: rgba(0, 0, 0, 0.28);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Sora', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+  line-height: 1.6;
+  transition: background 0.35s, color 0.35s;
+}
+
+/* ── REDUCED MOTION — hides animated layers, restores cursor ── */
+body.reduced-motion {
+  cursor: auto;
+}
+body.reduced-motion * {
+  cursor: auto !important;
+  animation: none !important;
+  transition: none !important;
+}
+body.reduced-motion #kk-ball,
+body.reduced-motion .dog-canvas {
+  display: none;
+}
+body.reduced-motion .rv {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+::-webkit-scrollbar { width: 3px; background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--accent); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ── BALL CURSOR ── */
+#kk-ball {
+  position: fixed;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #fff 0%, #ff8040 40%, #ff4500 100%);
+  box-shadow:
+    0 0 0 3px rgba(255, 69, 0, 0.2),
+    0 0 16px rgba(255, 69, 0, 0.9),
+    0 0 32px rgba(255, 69, 0, 0.5),
+    0 0 60px rgba(255, 69, 0, 0.2);
+  z-index: 999999;
+  pointer-events: none;
+  will-change: left, top;
+  transform: translate(-50%, -50%);
+  animation: ballpulse 2s ease-in-out infinite;
+}
+
+@keyframes ballpulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 3px rgba(255, 69, 0, 0.2),
+      0 0 16px rgba(255, 69, 0, 0.9),
+      0 0 32px rgba(255, 69, 0, 0.5),
+      0 0 60px rgba(255, 69, 0, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 0 0 6px rgba(255, 69, 0, 0.08),
+      0 0 26px rgba(255, 100, 40, 1),
+      0 0 52px rgba(255, 69, 0, 0.7),
+      0 0 100px rgba(255, 69, 0, 0.3);
+  }
+}
+
+/* ── SCROLL REVEAL ── */
+.rv {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.rv.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes bc {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes gdot {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+/* ── RESPONSIVE — tablet ── */
+@media (max-width: 900px) {
+  #home, section, footer {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+}
+
+/* ── MOBILE — touch devices ── */
+@media (hover: none) and (pointer: coarse) {
+
+  /* Restore cursor — touch devices don't have a cursor to hide */
+  body { cursor: auto !important; }
+  * { cursor: auto !important; }
+
+  /* Hide canvas layers — they serve no purpose on touch */
+  .dog-canvas,
+  #kk-ball { display: none !important; }
+
+  /* ── Hero ── */
+  #home {
+    padding: 100px 20px 60px !important;
+    min-height: 100svh;
+  }
+  /* Stack left/right vertically, hide the json panel on small screens */
+  #home > div {
+    flex-direction: column !important;
+    gap: 40px !important;
+  }
+  #home > div > div:last-child {
+    display: none !important; /* hide profile.json panel — too wide for mobile */
+  }
+  #home > div > div:first-child {
+    flex: unset !important;
+    width: 100% !important;
+  }
+
+  /* ── Navbar ── */
+  nav, [class*="navbar"], [id*="navbar"] {
+    padding: 0 20px !important;
+  }
+
+  /* ── Section padding ── */
+  section {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    padding-top: 70px !important;
+    padding-bottom: 70px !important;
+  }
+
+  /* ── About grid ── */
+  .about-grid,
+  [style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+
+  /* ── Projects — full width ── */
+  [style*="grid-template-columns"][style*="460px"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ── Certs grid ── */
+  [style*="grid-template-columns"][style*="300px"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ── Skills rows — stack vertically ── */
+  [style*="gridTemplateColumns: \"220px"] {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* ── Stats bar — equal columns ── */
+  [style*="borderRight"] > div {
+    flex: 1 !important;
+    padding: 16px 16px !important;
+  }
+
+  /* ── Footer ── */
+  footer {
+    padding: 20px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+}
+
+/* ── SMALL MOBILE — 390px and below ── */
+@media (max-width: 420px) {
+  /* Name size on very small screens */
+  #home h1, #home [style*="clamp(64px"] {
+    font-size: clamp(52px, 14vw, 80px) !important;
+    letter-spacing: -3px !important;
+  }
+
+  /* Section headings */
+  [style*="clamp(42px"], [style*="clamp(48px"] {
+    font-size: clamp(34px, 10vw, 48px) !important;
+    letter-spacing: -2px !important;
+  }
+
+  /* CTA buttons — full width on tiny screens */
+  [style*="View Projects"], [style*="Get In Touch"] {
+    width: 100% !important;
+    text-align: center !important;
+  }
+}
