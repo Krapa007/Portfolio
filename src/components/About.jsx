@@ -66,7 +66,7 @@ export default function About() {
 
             {[
               ["Name",         "Kalyan Krapa",          false],
-              ["Current Role", "Full Stack Intern",      true ],
+              ["Current Role", "Junior Software Engineer",      true ],
               ["Company",      "Stackular",              false],
               ["Education",    "B.Tech IT — DIET 2024",  false],
               ["Location",     "India 🇮🇳",              false],
