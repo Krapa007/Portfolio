@@ -7,7 +7,7 @@ const JSON_LINES = [
   ["jm", '// profile.json'],
   ["jc", '{'],
   ["entry", ["name",     "Kalyan Krapa"             ]],
-  ["entry", ["role",     "Full Stack Intern"         ]],
+  ["entry", ["role",     "Junior Software Engineer"         ]],
   ["entry", ["company",  "Stackular"                 ]],
   ["entry", ["stack",    '["React","Node","MongoDB"]']],
   ["entry", ["projects", "3 shipped"                ]],
@@ -104,7 +104,7 @@ export default function Hero({ reducedMotion = false }) {
             <strong style={{ color: "var(--text)", fontWeight: 600 }}>MERN Stack developer</strong>{" "}
             building fast, scalable, real-world web apps with clean code and interfaces people love.
             Currently a{" "}
-            <strong style={{ color: "var(--text)", fontWeight: 600 }}>Full Stack Intern at Stackular</strong>.
+            <strong style={{ color: "var(--text)", fontWeight: 600 }}>Junior Software Engineer at Stackular</strong>.
           </p>
 
           {/* CTAs */}
