@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;600;700;800&family=Fira+Code:wght@300;400;500&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+/* ── THEME VARIABLES ── */
+:root {
+  /* Dark mode: vivid aurora background kept, but text colors
+     raised significantly so content is readable over the canvas. */
+  --bg:   #0d0e14;
+  --bg2:  #13141c;
+  --bg3:  #1c1e28;
+  --text:   #f0ece4;        /* bright warm white — high contrast for headings */
+  --muted:  #a0a0b0;        /* raised from #7a7a8a — body copy now readable over canvas */
+  --muted2: #c0bcc8;        /* raised — secondary text clearly visible */
+  --accent:  #f05a28;       /* restored original vivid orange */
+  --accent2: #ff7a45;       /* restored */
+  --border:  #252630;
+  --white:   #f0ece4;
+  --green:   #3fd68a;
+  --code:    #8fffa0;
+  --outline-stroke: rgba(240, 236, 228, 0.28);
+  --glow: rgba(240, 90, 40, 0.18);
+}
+
+body.light {
+  --bg: #f5f0e8;
+  --bg2: #ede8de;
+  --bg3: #e4dfd4;
+  --text: #1a1a1a;
+  --muted: #666;
+  --muted2: #555;
+  --accent: #e03500;
+  --accent2: #f55520;
+  --border: #d0c9bc;
+  --white: #1a1a1a;
+  --green: #16a34a;
+  --code: #b34000;
+  --outline-stroke: rgba(0, 0, 0, 0.28);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Sora', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+  line-height: 1.6;
+  transition: background 0.35s, color 0.35s;
+}
+
+/* ── REDUCED MOTION — hides animated layers, restores cursor ── */
+body.reduced-motion {
+  cursor: auto;
+}
+body.reduced-motion * {
+  cursor: auto !important;
+  animation: none !important;
+  transition: none !important;
+}
+body.reduced-motion #kk-ball,
+body.reduced-motion .dog-canvas {
+  display: none;
+}
+body.reduced-motion .rv {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+::-webkit-scrollbar { width: 3px; background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--accent); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ── BALL CURSOR ── */
+#kk-ball {
+  position: fixed;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #fff 0%, #ff8040 40%, #ff4500 100%);
+  box-shadow:
+    0 0 0 3px rgba(255, 69, 0, 0.2),
+    0 0 16px rgba(255, 69, 0, 0.9),
+    0 0 32px rgba(255, 69, 0, 0.5),
+    0 0 60px rgba(255, 69, 0, 0.2);
+  z-index: 999999;
+  pointer-events: none;
+  will-change: left, top;
+  transform: translate(-50%, -50%);
+  animation: ballpulse 2s ease-in-out infinite;
+}
+
+@keyframes ballpulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 3px rgba(255, 69, 0, 0.2),
+      0 0 16px rgba(255, 69, 0, 0.9),
+      0 0 32px rgba(255, 69, 0, 0.5),
+      0 0 60px rgba(255, 69, 0, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 0 0 6px rgba(255, 69, 0, 0.08),
+      0 0 26px rgba(255, 100, 40, 1),
+      0 0 52px rgba(255, 69, 0, 0.7),
+      0 0 100px rgba(255, 69, 0, 0.3);
+  }
+}
+
+/* ── SCROLL REVEAL ── */
+.rv {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.rv.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes bc {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes gdot {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  #home, section, footer {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+}
