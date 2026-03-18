@@ -1,5 +1,5 @@
 export const ROLES = [
-  "Full Stack Intern @ Stackular",
+  "Junior Software Engineer @ Stackular",
   "MERN Stack Developer",
   "React Specialist",
   "Node.js Engineer",
