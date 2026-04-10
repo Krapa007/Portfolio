@@ -3,7 +3,7 @@
 Personal portfolio built with **React 18 + Vite**, featuring a custom Dalmatian dog cursor, aurora background animations, liquid glass UI, and 11 easter egg gimmicks.
 
 **Live:** [kalyan-krapa-portfolio.netlify.app](https://kalyan-krapa-portfolio.netlify.app)
-**Repo:** `git@gitlab.com:Krapa007/Portfolio.git`
+**Repo:** `git@gitlab.com:Krapa007/kalyan-portfolio.git`
 
 ---
 
@@ -23,8 +23,8 @@ Personal portfolio built with **React 18 + Vite**, featuring a custom Dalmatian 
 
 ```bash
 # Clone
-git clone git@gitlab.com:Krapa007/Portfolio.git
-cd Portfolio
+git clone git@gitlab.com:Krapa007/kalyan-portfolio.git
+cd kalyan-portfolio
 
 # Install
 npm install
