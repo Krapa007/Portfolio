@@ -1,9 +1,25 @@
-import { useState } from "react";
 import { SKILLS } from "../data/constants";
 
-function SkillRow({ s, delay }) {
-  const [hov, setHov] = useState(false);
+const SKILL_STYLE = `
+  .skill-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), auto));
+    gap: clamp(16px,2vw,32px); align-items: start; padding: 28px clamp(12px,2vw,20px);
+    border-radius: 2px; margin-bottom: 2px;
+    background: transparent; transform: translateX(0);
+    transition: background .3s, box-shadow .3s, backdrop-filter .3s, transform .3s;
+  }
+  /* CSS :hover so styles also apply on scroll, not just on pointer move */
+  .skill-row:hover {
+    background: rgba(255,255,255,.04);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 0 0 1px rgba(255,255,255,.06) inset, 0 4px 20px rgba(0,0,0,.2);
+    transform: translateX(4px);
+  }
+`;
 
+function SkillRow({ s, delay }) {
   const dispatchAccent = (active) => {
     if (typeof window === "undefined") return;
     if (active && s.signal) {
@@ -18,19 +34,9 @@ function SkillRow({ s, delay }) {
   return (
     <div className="rv" style={{ transitionDelay: `${delay}s` }}>
       <div
-        onMouseEnter={() => { setHov(true); dispatchAccent(true); }}
-        onMouseLeave={() => { setHov(false); dispatchAccent(false); }}
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 180px), auto))",
-          gap: "clamp(16px,2vw,32px)", alignItems: "start", padding: "28px clamp(12px,2vw,20px)",
-          transition: "all .3s", borderRadius: 2, marginBottom: 2,
-          background: hov ? "rgba(255,255,255,.04)" : "transparent",
-          backdropFilter: hov ? "blur(16px)" : "none",
-          WebkitBackdropFilter: hov ? "blur(16px)" : "none",
-          boxShadow: hov ? "0 0 0 1px rgba(255,255,255,.06) inset, 0 4px 20px rgba(0,0,0,.2)" : "none",
-          transform: hov ? "translateX(4px)" : "none",
-        }}
+        className="skill-row"
+        onMouseEnter={() => dispatchAccent(true)}
+        onMouseLeave={() => dispatchAccent(false)}
       >
         <div>
           <div style={{ fontWeight: 700, fontSize: 15, color: "var(--white)", marginBottom: 4, letterSpacing: "-.2px" }}>{s.name}</div>
@@ -67,6 +73,7 @@ export default function Skills() {
       onMouseEnter={() => window.dispatchEvent(new CustomEvent("dog:tether:skills"))}
       onMouseLeave={() => window.dispatchEvent(new CustomEvent("dog:untether"))}
     >
+      <style>{SKILL_STYLE}</style>
       <div style={{ maxWidth: 1280, margin: "0 auto" }}>
         <div className="rv" style={{
           display: "flex", alignItems: "center", gap: 14,

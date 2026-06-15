@@ -1,9 +1,6 @@
-import { useState } from "react";
 import { PROJECTS } from "../data/constants";
 
 function ProjectRow({ p }) {
-  const [hov, setHov] = useState(false);
-
   return (
     <>
       {/* Inject responsive style once */}
@@ -13,10 +10,23 @@ function ProjectRow({ p }) {
           flex-direction: column;
           gap: 20px;
           padding: clamp(24px,4vw,44px) clamp(12px,2vw,20px);
-          transition: all .3s;
+          transition: background .3s, box-shadow .3s, backdrop-filter .3s;
           position: relative;
           margin-bottom: 2px;
+          background: transparent;
         }
+        /* CSS :hover so the style also applies on scroll (JS mouseenter does not fire on stationary pointer) */
+        .proj-row:hover {
+          background: rgba(255,255,255,.04);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          box-shadow: 0 0 0 1px rgba(255,255,255,.05) inset;
+        }
+        .proj-accent {
+          position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+          background: var(--accent); opacity: 0; transition: opacity .25s;
+        }
+        .proj-row:hover .proj-accent { opacity: 1; }
         .proj-row-inner {
           display: grid;
           grid-template-columns: 1fr auto;
@@ -49,22 +59,9 @@ function ProjectRow({ p }) {
         }
       `}</style>
 
-      <div
-        className="proj-row"
-        onMouseEnter={() => setHov(true)}
-        onMouseLeave={() => setHov(false)}
-        style={{
-          background: hov ? "rgba(255,255,255,.04)" : "transparent",
-          backdropFilter: hov ? "blur(16px)" : "none",
-          WebkitBackdropFilter: hov ? "blur(16px)" : "none",
-          boxShadow: hov ? "0 0 0 1px rgba(255,255,255,.05) inset" : "none",
-        }}
-      >
+      <div className="proj-row">
         {/* Left accent bar */}
-        <div style={{
-          position: "absolute", left: 0, top: 0, bottom: 0, width: 3,
-          background: "var(--accent)", opacity: hov ? 1 : 0, transition: "opacity .25s",
-        }} />
+        <div className="proj-accent" />
 
         <div className="proj-row-inner">
           {/* Left content */}
@@ -115,6 +112,7 @@ function ProjectRow({ p }) {
             }}>
               {p.num}
             </span>
+            {p.gh && (
             <a
               href={p.gh}
               target="_blank"
@@ -132,6 +130,8 @@ function ProjectRow({ p }) {
             >
               🐙 View on GitHub
             </a>
+            )}
+            {p.live && (
             <a
               href={p.live}
               target="_blank"
@@ -154,6 +154,18 @@ function ProjectRow({ p }) {
               }} />
               Live Demo
             </a>
+            )}
+            {!p.gh && !p.live && (
+              <span style={{
+                display: "flex", alignItems: "center", gap: 8,
+                fontFamily: "'Fira Code', monospace", fontSize: 11,
+                letterSpacing: 0.5, color: "var(--muted2)",
+                border: "1px solid rgba(255,255,255,.1)", padding: "8px 16px",
+                whiteSpace: "nowrap",
+              }}>
+                🔒 Private · Internal
+              </span>
+            )}
           </div>
         </div>
       </div>
