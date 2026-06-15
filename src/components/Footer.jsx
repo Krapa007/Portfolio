@@ -10,7 +10,7 @@ export default function Footer() {
       </div>
 
       <span style={{ fontFamily: "'Fira Code', monospace", fontSize: 10, color: "var(--muted)", letterSpacing: 0.3 }}>
-        © 2025 Kalyan Krapa
+        © {new Date().getFullYear()} Kalyan Krapa
       </span>
 
       <div style={{ display: "flex", gap: 16 }}>

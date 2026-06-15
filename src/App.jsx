@@ -33,8 +33,8 @@ export default function App() {
     ball.id = "kk-ball";
     document.body.appendChild(ball);
     const onMove = (e) => {
-      ball.style.left = e.clientX + "px";
-      ball.style.top  = e.clientY + "px";
+      // GPU-composited: transform instead of left/top avoids per-frame layout
+      ball.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`;
     };
     window.addEventListener("mousemove", onMove, { capture: true, passive: true });
     return () => {

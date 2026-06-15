@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useTypewriter } from "../hooks/useTypewriter";
 import { useGimmicks } from "../hooks/useGimmicks";
-import { GLASS_STYLE } from "../data/constants";
+import { GLASS_STYLE, CERTS } from "../data/constants";
 
 const JSON_LINES = [
   ["jm", '// profile.json'],
@@ -38,7 +38,7 @@ export default function Hero({ reducedMotion = false }) {
     <section
       id="home"
       style={{
-        minHeight: "100vh", display: "flex", alignItems: "center",
+        minHeight: "100dvh", display: "flex", alignItems: "center",
         padding: "120px clamp(20px,4vw,60px) 80px", position: "relative",
       }}
     >
@@ -144,14 +144,14 @@ export default function Hero({ reducedMotion = false }) {
             }} />
             {[
               { num: "3", suffix: "", label: "Live Projects" },
-              { num: "3", suffix: "+", label: "Certifications" },
+              { num: String(CERTS.length), suffix: "", label: "Certifications" },
               { num: "1", suffix: "🏆", label: "Award Won" },
             ].map(({ num, suffix, label }) => (
               <div key={label} style={{
                 display: "flex", flexDirection: "column", flex: "1 1 80px",
                 padding: "18px clamp(12px,3vw,32px)", borderRight: "1px solid rgba(255,255,255,.08)",
               }}>
-                <span style={{ fontWeight: 800, fontSize: 38, color: "var(--white)", lineHeight: 1 }}>
+                <span style={{ fontWeight: 800, fontSize: 38, color: "var(--white)", lineHeight: 1, fontVariantNumeric: "tabular-nums" }}>
                   {num}<span style={{ color: "var(--accent)" }}>{suffix}</span>
                 </span>
                 <span style={{

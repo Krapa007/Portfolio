@@ -50,7 +50,14 @@ body {
   cursor: none;
   line-height: 1.6;
   transition: background 0.35s, color 0.35s;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
+
+/* Premium typography defaults: kill orphans, balance display lines */
+h1, h2, h3 { text-wrap: balance; }
+p { text-wrap: pretty; }
 
 /* ── REDUCED MOTION — hides animated layers, restores cursor ── */
 body.reduced-motion {
@@ -91,6 +98,8 @@ body.reduced-motion .rv {
 /* ── BALL CURSOR ── */
 #kk-ball {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 18px;
   height: 18px;
   border-radius: 50%;
@@ -102,8 +111,8 @@ body.reduced-motion .rv {
     0 0 60px rgba(255, 69, 0, 0.2);
   z-index: 999999;
   pointer-events: none;
-  will-change: left, top;
-  transform: translate(-50%, -50%);
+  will-change: transform;
+  transform: translate3d(-50%, -50%, 0);
   animation: ballpulse 2s ease-in-out infinite;
 }
 

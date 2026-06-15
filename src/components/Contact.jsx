@@ -63,7 +63,7 @@ export default function Contact() {
               navigator.clipboard.writeText("krapa.kalyan@gmail.com").then(() => {
                 // show toast
                 const el = document.createElement("div");
-                el.textContent = "📋 Copied to clipboard!";
+                el.textContent = "📋 Copied to clipboard";
                 el.style.cssText = `position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(20px);
                   z-index:99995;background:rgba(20,20,20,0.92);color:#fff;padding:12px 28px;
                   font-family:'Fira Code',monospace;font-size:13px;border:1px solid rgba(255,255,255,.15);
@@ -100,6 +100,7 @@ export default function Contact() {
             <a
               key={btn.label}
               href={btn.href}
+              {...(btn.primary ? {} : { target: "_blank", rel: "noopener noreferrer" })}
               onMouseEnter={(e) => {
                 if (!btn.primary) {
                   e.currentTarget.style.borderColor = "var(--accent)";

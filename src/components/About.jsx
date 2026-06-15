@@ -43,8 +43,10 @@ export default function About() {
             {/* Award */}
             <div style={{
               display: "flex", gap: 16, alignItems: "flex-start",
-              borderLeft: "3px solid #fbbf24", padding: "18px 20px",
-              background: "rgba(251,191,36,.04)",
+              border: "1px solid rgba(251,191,36,.22)", borderRadius: 4,
+              padding: "20px 22px",
+              background: "linear-gradient(135deg, rgba(251,191,36,.07), rgba(251,191,36,.02))",
+              boxShadow: "0 8px 30px rgba(251,191,36,.05)",
             }}>
               <span style={{ fontSize: 26, flexShrink: 0, lineHeight: 1.2 }}>🏆</span>
               <div>
