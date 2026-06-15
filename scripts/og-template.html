@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;600;800&family=Fira+Code:wght@400;500&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; }
+  body {
+    font-family: 'Sora', sans-serif;
+    background: #080808;
+    color: #f0ece4;
+    overflow: hidden;
+    position: relative;
+  }
+  /* ambient orange glow, top-right */
+  .glow {
+    position: absolute;
+    top: -260px; right: -200px;
+    width: 760px; height: 760px;
+    background: radial-gradient(circle, rgba(255,69,0,.22) 0%, rgba(255,69,0,.06) 38%, transparent 68%);
+    filter: blur(8px);
+  }
+  /* faint dot grid */
+  .grid {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px);
+    background-size: 38px 38px;
+    mask-image: radial-gradient(circle at 30% 50%, #000 0%, transparent 80%);
+    -webkit-mask-image: radial-gradient(circle at 30% 50%, #000 0%, transparent 80%);
+  }
+  .frame { position: absolute; inset: 0; padding: 72px 80px; display: flex; flex-direction: column; justify-content: space-between; }
+  .top { display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-weight: 800; font-size: 30px; letter-spacing: -.5px; }
+  .logo span { color: #ff4500; }
+  .avail {
+    font-family: 'Fira Code', monospace; font-size: 15px; color: #3fd68a;
+    display: flex; align-items: center; gap: 10px;
+    border: 1px solid rgba(63,214,138,.28); padding: 9px 18px; border-radius: 2px;
+    background: rgba(63,214,138,.07);
+  }
+  .avail .dot { width: 9px; height: 9px; border-radius: 50%; background: #3fd68a; box-shadow: 0 0 10px #3fd68a; }
+  .mid { margin-top: -8px; }
+  .eyebrow {
+    font-family: 'Fira Code', monospace; font-size: 19px; color: #ff4500;
+    letter-spacing: 1px; margin-bottom: 18px;
+  }
+  .name { font-weight: 800; font-size: 132px; line-height: .9; letter-spacing: -6px; }
+  .name .l1 { color: #f0ece4; display: block; }
+  .name .l2 {
+    display: block;
+    -webkit-text-stroke: 2.5px rgba(255,255,255,.40);
+    color: transparent;
+  }
+  .bottom { display: flex; justify-content: space-between; align-items: flex-end; }
+  .stack { font-family: 'Fira Code', monospace; font-size: 18px; color: #c8c4bc; letter-spacing: 1px; }
+  .stack b { color: #f0ece4; font-weight: 500; }
+  .url { font-family: 'Fira Code', monospace; font-size: 16px; color: #aaa; }
+  .accentline { position: absolute; left: 0; bottom: 0; height: 6px; width: 100%;
+    background: linear-gradient(90deg, #ff4500, #ff6b35 55%, transparent); }
+</style>
+</head>
+<body>
+  <div class="glow"></div>
+  <div class="grid"></div>
+  <div class="frame">
+    <div class="top">
+      <div class="logo">KC<span>.</span></div>
+      <div class="avail"><span class="dot"></span>Available for full-time roles</div>
+    </div>
+    <div class="mid">
+      <div class="eyebrow">// Full Stack Developer</div>
+      <div class="name"><span class="l1">Kalyan</span><span class="l2">Krapa.</span></div>
+    </div>
+    <div class="bottom">
+      <div class="stack"><b>React</b> · <b>Node</b> · <b>MongoDB</b> · <b>.NET</b> · real-time apps</div>
+      <div class="url">kalyan-krapa-portfolio.netlify.app</div>
+    </div>
+  </div>
+  <div class="accentline"></div>
+</body>
+</html>
