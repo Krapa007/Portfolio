@@ -35,6 +35,15 @@ export const PROJECTS = [
     gh: "https://github.com/Krapa007/Portfolio",
     live: "https://kalyan-krapa-portfolio.netlify.app/",
   },
+  {
+    num: "04",
+    tags: ["Full-Stack", "AI", "Work"],
+    name: "Stackular ATS",
+    desc: "An internal Applicant Tracking System I built at Stackular covering the full hiring pipeline — AI-generated job descriptions, bulk resume upload, and automated match-scoring. The hardest part was the real-time scoring pipeline: I queued resume jobs in a .NET BackgroundService and streamed score updates to the React board over SSE, so recruiters watch matches populate live. The AI layer is a Python FastAPI service that scores candidates and drafts JDs via an LLM. I also moved auth to httpOnly-cookie JWT and hardened the whole app against the SonarQube TypeScript ruleset.",
+    tech: ["React 19", "TypeScript", ".NET 10", "Python", "FastAPI", "SQL Server", "Azure Blob"],
+    gh: "",
+    live: "",
+  },
 ];
 
 export const SKILLS = [
@@ -87,11 +96,11 @@ export const SKILLS = [
     signal: { r: 168, g: 85, b: 247 },
   },
   {
-    name: "MySQL & .NET",
-    cat: "Database • Learning",
-    desc: "Relational database fundamentals from coursework and the CISCO Networks certification. Currently exploring .NET to broaden backend experience beyond the Node ecosystem.",
-    chips: ["MySQL", "SQL", ".NET (Learning)", "GitLab"],
-    projs: ["Learning"],
+    name: "C# / ASP.NET Core",
+    cat: "Backend • API",
+    desc: "I built the Stackular ATS backend on .NET 10 — controllers, model binding, dependency injection, and a BackgroundService that streams scoring updates over SSE. I keep sharpening the fundamentals on Udemy, Exercism, and Project Euler, write xUnit tests as I go, and back it all with relational data in SQL Server and MySQL.",
+    chips: ["C#", "ASP.NET Core", "LINQ", "Dependency Injection", "xUnit", "SQL Server / MySQL"],
+    projs: ["Project 4"],
     signal: { r: 59, g: 130, b: 246 },
   },
 ];
@@ -100,6 +109,11 @@ export const CERTS = [
   { ico: "🐍", name: "Programming Essentials in Python", org: "OPEN EDG", url: "https://drive.google.com/file/d/1wIxrDdare2oCFnQKIk1cJ3vfKtYNv3mz/view" },
   { ico: "🌐", name: "Introduction to Networks", org: "CISCO Networking Academy", url: "https://drive.google.com/file/d/1e7LrigONlBXWZPSz-j8AOHLiIvfBgbbz/view" },
   { ico: "⚡", name: "The Complete JavaScript Course", org: "Udemy", url: "https://drive.google.com/file/d/19FeplLBZ_laiLOiWMblTLzwhTzXw3BEw/view" },
+  { ico: "💻", name: "Claude Code in Action", org: "Anthropic", url: "https://drive.google.com/file/d/1Me9vDnwCBUsRzURP4P-xWf5LsZVyZ3en/view?usp=drive_link" },
+  { ico: "🤖", name: "Introduction to Subagents", org: "Anthropic", url: "https://drive.google.com/file/d/1UB_a_bmhj2QHrAdn9WgU8BYhv5M4fKSZ/view?usp=drive_link" },
+  { ico: "🛠️", name: "Introduction to Agent Skills", org: "Anthropic", url: "https://drive.google.com/file/d/11Hho92l72Io4IF5Rx8ZnLR6VD6PvHamw/view?usp=drive_link" },
+  { ico: "🤝", name: "Introduction to Claude Cowork", org: "Anthropic", url: "https://drive.google.com/file/d/1BzXTfqT6-eHKZIocgrA6pPWcPTbGJXGb/view?usp=drive_link" },
+  { ico: "🚀", name: "Claude Code 101", org: "Anthropic", url: "https://drive.google.com/file/d/1XW9oldMOdBo4QMcfJOWVeYYf8GOgoR6q/view?usp=drive_link" },
 ];
 
 export const GLASS_STYLE = {
